@@ -1,0 +1,17 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Proxy2.Service" Factory="Proxy2.AppServiceHostFactory"%>
+
+using System;
+using System.ServiceModel;
+using System.ServiceModel.Activation;
+using Microsoft.ServiceModel.Web;
+
+namespace Proxy2 
+{
+  class AppServiceHostFactory : ServiceHostFactory
+  {
+    protected override ServiceHost CreateServiceHost(Type serviceType, Uri[] baseAddresses)
+    {
+        return new WebServiceHost2(serviceType, true, baseAddresses);
+    }
+  }
+}
